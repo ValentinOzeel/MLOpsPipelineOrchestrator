@@ -1,0 +1,23 @@
+# This is a boilerplate parameters config generated for pipeline 'initialize_data'
+# using Kedro 0.19.2.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.2/configuration/parameters.html
+
+
+ETL:
+  file_name_wo_extension: spaceship
+  dataset_suffix_mark: '_raw_data_csv'
+  target: Transported
+
+  to_predict:
+    file_name_wo_extension: to_predict
+    dataset_suffix_mark: '_raw_data_csv'
+
+
+
+
+
+
+
+

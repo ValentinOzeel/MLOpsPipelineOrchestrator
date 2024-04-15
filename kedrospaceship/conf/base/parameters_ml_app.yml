@@ -1,0 +1,36 @@
+# This is a boilerplate parameters config generated for pipeline 'data_split'
+# using Kedro 0.19.2.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.2/configuration/parameters.html
+
+INITIALIZE:
+  data_copy: False
+  try_y_as_num: True 
+  print_data_info: True
+  target: Transported
+
+DATA_SPLIT:
+  test_size: 0.1
+  shuffle: True
+  random_state: null # If None, will use mlp's random_state as configured in kedrospaceship.mlp_instance
+  pre_split: True
+
+DATA_PIPELINES:
+    directory: 'src/kedrospaceship/mlp_params/data_pipelines'
+    file_name_suffix: '_steps.py'
+    steps_variable: pipeline_steps
+    pipelines: ['preprocessing_pipeline', 'sampling_pipeline']
+    drop_corresponding_in_y: False
+    
+MODEL:
+  directory: 'src/kedrospaceship/mlp_params/models'
+  file_name_suffix: '.py'
+  scoring: accuracy
+  model:
+    model_variable: model
+    model_name: XGB_model
+  hyperparameters:
+    sub_directory: 'hyperparameters'
+    hyperparameters_variable: hyperparameters
+    hyperparameters_name: hyperparameters_best

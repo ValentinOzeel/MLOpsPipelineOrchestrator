@@ -1,0 +1,31 @@
+# This is a boilerplate parameters config generated for pipeline 'fine_tunning'
+# using Kedro 0.19.2.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.2/configuration/parameters.html
+
+
+FINE_TUNNING:
+  method: optuna # optuna / gridsearch
+  directory: 'src\kedrospaceship\mlp_params\fine_tunning'
+  file_name_suffix: '_experiments.py'
+  hyperparams_variable: hyperparam_experiments
+
+  predefined_kf: False
+  kf_path: 'src\kedrospaceship\mlp_params\kf\kf.py' 
+  kf_variable: kf
+
+  scoring: accuracy
+  n_splits: 5
+  cv_n_jobs: -1
+  verbose: True 
+
+  optuna_specific_params:
+    n_trials: 5
+    direction: maximize
+    custom_objective: null
+
+
+
+DATA_PIPELINES_MODEL_HYPERPARAMS:
+  dir: 'src\kedrospaceship\mlp_params\fine_tunning\best_hyperparams'

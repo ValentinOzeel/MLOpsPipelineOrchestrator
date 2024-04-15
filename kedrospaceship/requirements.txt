@@ -1,0 +1,21 @@
+ipython>=8.10
+jupyterlab>=3.0
+kedro~=0.19.2
+kedro-datasets>=1.0
+kedro-telemetry>=0.3.1
+kedro-viz>=6.7.0
+notebook
+ruff~=0.1.8
+
+
+dill==0.3.8 # For effective serialization of function_transformers
+docker==7.0.0
+kedro==0.19.2
+kedro-airflow==0.8.0
+kedro-datasets==2.0.0
+kedro-viz==7.1.0
+kedro_mlflow==0.12.1
+mlflow==2.10.2
+xgboost==2.0.3
+# Editable install with no version control (MLp==0.1)
+-e /home/kedro_docker/MLp

@@ -1,0 +1,52 @@
+"{file_name}_raw_data_csv":
+  type: pandas.CSVDataset
+  filepath: data/01_raw/{file_name}.csv
+  metadata:
+    kedro-viz:
+      layer: 01_raw
+
+
+"{layer}.{dataset_name}@parquet":
+  type: pandas.ParquetDataset
+  filepath: data/{layer}/{dataset_name}.parquet
+  save_args:
+    index: True
+  metadata:
+    kedro-viz:
+      layer: {layer}
+
+
+"{layer}.{dataset_name}@csv":
+  type: pandas.CSVDataset
+  filepath: data/{layer}/{dataset_name}.csv
+  save_args:
+    index: True
+    header: True
+  metadata:
+    kedro-viz:
+      layer: {layer}
+
+
+"predictions@csv":
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/predictions.csv
+  metadata:
+    kedro-viz:
+      layer: 07_model_output
+
+
+
+"fitted_{objet}@pkl":
+  type: pickle.PickleDataset
+  filepath: data/06_models/fitted_{objet}.pkl
+  backend: dill # To enable serialization of complex function transformers with our data pipelines
+
+
+to_predict:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/to_predict.csv
+
+
+
+
+
