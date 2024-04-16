@@ -28,8 +28,9 @@ OR install via the pyproject.toml file !
 You can run your Kedro project with:
 
 ```
-Open a terminal, cd to the project root. run 'mlflow ui'.
+Open a terminal, cd to the Kedro project root and run 'mlflow ui'.
 In another terminal run 'kedro run' or 'kedro run --pipeline=PIPELINE_TO_EXECUTE'
+Run 'kedro viz run' to interactively visualize your pipeline. 
 
 ```
 
