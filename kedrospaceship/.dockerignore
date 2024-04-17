@@ -9,8 +9,9 @@ Dockerfile
 conf/**/*credentials*
 
 # ignore all local configuration
-#conf/local
-#!conf/local/.gitkeep
+conf/local
+!conf/local/.gitkeep
+!conf/local/mlflow.yml
 
 # ignore everything in the following folders
 mlruns

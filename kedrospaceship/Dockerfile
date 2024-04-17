@@ -1,13 +1,19 @@
-ARG BASE_IMAGE=python:3.11-slim
+ARG BASE_IMAGE=python:3.10-slim
 FROM $BASE_IMAGE as runtime-environment
 
 # Install Git
 RUN apt-get update && apt-get install -y git
 
-COPY /MLp /home/kedro_docker/MLp
 # install project requirements
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
+
+
+RUN pip install poetry-core==1.9.0
+RUN pip install git+https://github.com/ValentinOzeel/MLp.git@main
+
+
+
 
 
 # add kedro user
