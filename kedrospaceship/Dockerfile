@@ -8,14 +8,6 @@ RUN apt-get update && apt-get install -y git
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
 
-
-RUN pip install poetry-core==1.9.0
-RUN pip install git+https://github.com/ValentinOzeel/MLp.git@main
-
-
-
-
-
 # add kedro user
 ARG KEDRO_UID=999
 ARG KEDRO_GID=0
