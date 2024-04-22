@@ -1,27 +1,6 @@
 ##########################
-# KEDRO PROJECT
 
-# ignore all local configuration
-conf/local/**
-!conf/local/.gitkeep
-# Let the mlflow.yml accessible as I have no sensible credential here at the moment
-#!conf/local/mlflow.yml 
-
-# ignore potentially sensitive credentials files
-conf/**/*credentials*
-
-# ignore everything in the following folders
-data/**
-
-# except their sub-folders
-!data/**/
-
-# also keep all .gitkeep files
-!.gitkeep
-
-# keep also the example dataset
-!data/01_raw/*
-
+standalone_admin_password.txt
 
 ##########################
 # Common files

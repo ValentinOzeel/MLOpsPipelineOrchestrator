@@ -26,5 +26,5 @@ COPY --chown=${KEDRO_UID}:${KEDRO_GID} . .
 
 EXPOSE 5000
 
-CMD mlflow ui --host=0.0.0.0 --port=5000 & kedro run --pipeline=training --async
+CMD mlflow ui --host=0.0.0.0 --port=5000 & kedro run --pipeline=training
 

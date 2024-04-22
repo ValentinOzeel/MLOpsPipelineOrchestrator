@@ -1,0 +1,9 @@
+##########################
+
+standalone_admin_password.txt
+
+# ignore Dockerfile and .dockerignore
+Dockerfile
+.dockerignore
+
+

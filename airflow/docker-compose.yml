@@ -1,0 +1,20 @@
+version: '3'
+services:
+  airflow_docker:
+    image: airflow_docker:latest
+
+    environment:
+      # Path of project's data folder (will be mounted to get produced data)
+      - DATA_PATH=C:\Users\V.ozeel\Documents\Perso\Coding\Python\Projects\MLOps_Pipeline_Orchetrator\kedrospaceship\data
+      # Path of project's mlruns folder (will be mounted to access mlflow logged artifacts)
+      - MLRUNS_PATH=C:\Users\V.ozeel\Documents\Perso\Coding\Python\Projects\MLOps_Pipeline_Orchetrator\kedrospaceship\mlruns
+
+    volumes:
+      - .\airflow:/opt/airflow
+      - //var/run/docker.sock:/var/run/docker.sock
+
+
+    ports:
+      - "8080:8080"
+
+    command: airflow standalone

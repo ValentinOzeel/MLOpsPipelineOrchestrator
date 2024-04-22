@@ -1,0 +1,11 @@
+AIRFLOW_CONFIG:
+  container_data_path: '/home/kedro_docker/data'
+  container_mlruns_path: '/home/kedro_docker/mlruns'
+  pipeline_name: "training"
+  project_image: 'kedrospaceship:latest'
+  user: 'root'
+  task_id: 'run-training-pipeline'
+  start_year: 2024
+  start_month: 4
+  start_day: 21
+  schedule_interval: '@daily'

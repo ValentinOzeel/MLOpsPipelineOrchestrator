@@ -1,1 +1,0 @@
-{'directory': 'src/kedrospaceship/mlp_params/data_pipelines', 'file_name_suffix': '_steps.py', 'steps_variable': 'pipeline_steps', 'pipelines': ['preprocessing_pipeline', 'sampling_pipeline'], 'drop_corresponding_in_y': False}

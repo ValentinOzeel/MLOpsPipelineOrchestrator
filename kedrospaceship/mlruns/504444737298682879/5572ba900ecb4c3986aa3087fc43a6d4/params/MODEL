@@ -1,1 +1,0 @@
-{'directory': 'src/kedrospaceship/mlp_params/models', 'file_name_suffix': '.py', 'scoring': 'accuracy', 'model': {'model_variable': 'model', 'model_name': 'XGB_model'}, 'hyperparameters': {'sub_directory': 'hyperparameters', 'hyperparameters_variable': 'hyperparameters', 'hyperparameters_name': 'hyperparameters_best'}}
