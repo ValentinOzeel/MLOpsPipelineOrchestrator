@@ -17,14 +17,18 @@ airflow_config = yaml_file['AIRFLOW_CONFIG']
 container_data_path = airflow_config['container_data_path']
 data_path = os.environ.get('DATA_PATH')
 mount_data_dir = Mount(target=container_data_path, source=data_path, type='bind')
-# Mount Mlflow tracker (mlruns)
+# Mount Mlflow tracker (mlruns params and tags)
 container_mlruns_path = airflow_config['container_mlruns_path']
 mlruns_path = os.environ.get('MLRUNS_PATH')
 mount_mlruns_dir = Mount(target=container_mlruns_path, source=mlruns_path, type='bind')
+# Mount Mlflow tracker (mlruns artifacts)
+mlruns_in_docker = os.environ.get('ARTIFACTS_DOCKER_PATH')
+mount_artifacts = Mount(target=mlruns_in_docker, source=mlruns_path, type='bind')
+
 
 pipeline_name, project_image = airflow_config['pipeline_name'], airflow_config['project_image']
 user, task_id = airflow_config['user'], airflow_config['task_id']
-volumes = [mount_mlruns_dir, mount_data_dir]
+volumes = [mount_mlruns_dir, mount_data_dir, mount_artifacts]
 
 with DAG(
     dag_id='kedrospaceship',

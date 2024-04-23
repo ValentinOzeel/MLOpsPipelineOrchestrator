@@ -31,4 +31,4 @@ def run_best_model_inference():
   return (predictions)
 
 predicts = run_best_model_inference()
-print(predicts)
+print(f'Model predictions: {predicts}')

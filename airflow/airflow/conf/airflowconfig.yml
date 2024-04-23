@@ -7,5 +7,5 @@ AIRFLOW_CONFIG:
   task_id: 'run-training-pipeline'
   start_year: 2024
   start_month: 4
-  start_day: 21
+  start_day: 22
   schedule_interval: '@daily'

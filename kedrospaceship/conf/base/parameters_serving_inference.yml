@@ -1,5 +1,5 @@
 SERVING_INFERENCE:
   PROJECT_NAME: "kedrospaceship"
-  MLFLOW_RUN_ID: "5572ba900ecb4c3986aa3087fc43a6d4"
+  MLFLOW_RUN_ID: "7708a092b86b4a1a97f9effa42ecc33a"
   TO_PREDICT_PATH: |
-                   data\01_raw\to_predict.csv
+                   kedrospaceship\data\01_raw\to_predict.csv

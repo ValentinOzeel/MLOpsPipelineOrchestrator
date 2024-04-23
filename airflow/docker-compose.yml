@@ -5,9 +5,11 @@ services:
 
     environment:
       # Path of project's data folder (will be mounted to get produced data)
-      - DATA_PATH=C:\Users\V.ozeel\Documents\Perso\Coding\Python\Projects\MLOps_Pipeline_Orchetrator\kedrospaceship\data
-      # Path of project's mlruns folder (will be mounted to access mlflow logged artifacts)
-      - MLRUNS_PATH=C:\Users\V.ozeel\Documents\Perso\Coding\Python\Projects\MLOps_Pipeline_Orchetrator\kedrospaceship\mlruns
+      - DATA_PATH=YOUR\PATH\TO\THE\PROJECT\MLOps_Pipeline_Orchetrator\kedrospaceship\data
+      # Path of project's mlruns folder (will be mounted to access mlflow logged params and tags)
+      - MLRUNS_PATH=YOUR\PATH\TO\THE\PROJECT\MLOps_Pipeline_Orchetrator\kedrospaceship\mlruns
+      # Path of artifacts in docker container (same as local mlruns path; will be mounted to access mlflow logged artifacts)
+      - ARTIFACTS_DOCKER_PATH=/YOUR/PATH/TO/THE/PROJECT/MLOps_Pipeline_Orchetrator/kedrospaceship/mlruns
 
     volumes:
       - .\airflow:/opt/airflow
