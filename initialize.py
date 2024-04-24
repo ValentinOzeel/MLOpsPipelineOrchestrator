@@ -2,7 +2,7 @@ import subprocess
 import os
 import time
 
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+root_path = os.path.abspath(os.path.dirname(__file__))
 
 def launch_mlflow_server():
     # Run kedrospaceship training once to initialize mlruns folder (with its meta.yml files)
@@ -18,27 +18,35 @@ def run_command_blocking(command):
     
     
 if __name__ == "__main__":
-    
-    run_command_blocking(f'cd {os.path.join(root_path, 'kedrospaceship')}')
+    # Cd to kedrospaceship dir
+    os.chdir(os.path.join(root_path, 'kedrospaceship'))
     # install_package_in_path (kedrospaceship & dependencies) and wait for completion
+    print('\n- Installing kedrospaceship and dependencies...'.upper())
     run_command_blocking('pip install .')
     # Run kedro mlflow init
+    print('\n- Initializing kedro mlflow...'.upper())
     run_command_blocking("kedro mlflow init")
     
     # Run mlflow server
+    print('\n- Launching mlflow server...'.upper())
     mlflow_server_process = launch_mlflow_server()
     # Wait for the server to be running
     time.sleep(15)
     # Run kedro pipeline to init mlruns folder (with its meta.yml files)
+    print('\n- Initializing mlflow experiment...'.upper())
     run_command_blocking("kedro run --pipeline=training")
     # End mlflow server (going to be ran in docker)
+    print('\n- Closing mlflow server...'.upper())
     end_process(mlflow_server_process)
 
     # Cd to project root
-    run_command_blocking(f'cd {root_path}')
+    os.chdir(root_path)
     # Create kedrospaceship Docker image
-    run_command_blocking("docker build --pull --rm -f 'kedrospaceship\Dockerfile' -t kedrospaceship:latest 'kedrospaceship'") 
+    print('\n- Creating kedrospaceship docker image...'.upper())
+    run_command_blocking(f"docker build --pull --rm -f {os.path.join(root_path, 'kedrospaceship/Dockerfile')} -t kedrospaceship:latest {os.path.join(root_path, 'kedrospaceship')}") 
     # Create airflow app Docker image
-    run_command_blocking("docker build --pull --rm -f 'airflow\Dockerfile' -t airflow_docker:latest 'airflow'")
+    print('\n- Creating airflow docker image...'.upper())
+    run_command_blocking(f"docker build --pull --rm -f {os.path.join(root_path, 'airflow/Dockerfile')} -t airflow_docker:latest {os.path.join(root_path, 'airflow')}")
     # Run docker-compose
-    run_command_blocking("docker compose -f 'airflow\docker-compose.yml' up -d --build")
+    print('\n- Running docker compose...'.upper())
+    run_command_blocking(f"docker compose -f {os.path.join(root_path, 'airflow/docker-compose.yml')} up -d --build")
